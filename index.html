@@ -52,9 +52,8 @@
     <div class="group-maria">
       <div class="artist-name"><p>МАРИЯ АГУРЕЕВА</p></div>
       <div class="line"></div>
-      <!-- <div class="circle1"></div> -->
+      <div class="artist-aliby">художник</div>
       <div class="maria-content">
-        <div class="artist-aliby">художник</div>
         <div class="artist-content">
           <div class="artist-img">
             <img src="./images/Agureeva_croped-9926.jpg" alt="">
@@ -112,7 +111,8 @@
           backgroundPicture = $('.background-picture'),
           parallax = $('.parallax'),
           images = $("div[class^='image']"),
-          groupMaria = $('.group-maria'),
+          groupMaria = $('.group-maria p'),
+          artistNames = document.querySelectorAll('.artist-name'),
           imageStyle0 = $(images[0]).css('margin-top').slice(0, -2),
           imageStyle1 = $(images[1]).css('margin-top').slice(0, -2),
           imageStyle2 = $(images[2]).css('margin-top').slice(0, -2),
@@ -130,11 +130,11 @@
         var top = $(window).scrollTop();
 
         if ((parallax.offset().top)/4 < top && (parallax.offset().top)*1.8 > top) {
-          images[0].style.marginTop = imageStyle0 - top/10 + 'px';
-          images[1].style.marginTop = imageStyle1 - top/5 + 'px';
-          images[2].style.marginTop = imageStyle2 - top/7 + 'px';
-          images[3].style.marginBottom = imageStyle3 + top/5 + 'px';
-          images[4].style.marginTop = imageStyle4 - top/4 + 'px';
+          images[0].style.marginTop = imageStyle0 - top/5 + 'px';
+          images[1].style.marginTop = imageStyle1 - top/4 + 'px';
+          images[2].style.marginTop = imageStyle2 - top/10 + 'px';
+          images[3].style.marginBottom = imageStyle3 + top/2 + 'px';
+          images[4].style.marginTop = imageStyle4 - top/3 + 'px';
           images[5].style.marginTop = imageStyle5 - top/10 + 'px';
         }
 
@@ -145,6 +145,59 @@
         }
 
       })
+
+      $.fn.inView = function(){
+        var win = $(window);
+        obj = $(this);
+        var scrollPosition = win.scrollTop();
+        var visibleArea = win.scrollTop() + win.height();
+        var objEndPos = (obj.offset().top + obj.outerHeight());
+        return(visibleArea >= objEndPos && scrollPosition <= objEndPos ? true : false)
+      };
+
+
+      $(window).scroll(function(){
+        if ($(artistNames[0]).inView()) {
+          artistNames[0].style.marginRight = 500 - $(window).scrollTop()/6 + 'px';
+          document.querySelector('.group-maria .artist-aliby').style.paddingTop = 55 - $(window).scrollTop()/50 + 'px';
+        }
+        if ($(artistNames[1]).inView()) {
+          artistNames[1].style.marginLeft = 600 - $(window).scrollTop()/6 + 'px';
+          document.querySelector('.group-yulia .artist-aliby').style.paddingTop = 65 - $(window).scrollTop()/55 + 'px';
+          console.log(60 - $(window).scrollTop()/100)
+        }
+      });
+
+      // $(window).on('mousemove', function(e){
+      //   var x = window.innerWidth-e.clientX,
+      //       y = window.innerHeight-e.clientY,
+      //       moveXfast = x/120,
+      //       moveYfast = y/80,
+      //       moveXslow = x/300,
+      //       moveYslow = y/200,
+      //       moveX = x/200,
+      //       moveY = y/150;
+
+      //       console.log(imageStyle0)
+
+      //     images[0].style.marginLeft =   +'px';
+      //     images[0].style.marginTop  =   +'px';
+
+      //     images[1].style.marginLeft =  + 'px';
+      //     images[1].style.marginTop  =  + 'px';
+
+      //     images[2].style.marginLeft =  'px';
+      //     images[2].style.marginTop  =  'px';
+
+      //     images[3].style.marginLeft =  + 'px';
+      //     images[3].style.marginTop  =  + 'px';
+
+      //     images[4].style.marginLeft =  'px';
+      //     images[4].style.marginTop  =  'px';
+
+      //     images[5].style.marginLeft =  'px';
+      //     images[5].style.marginTop  =  'px';
+      // })
 
     });
   </script>
