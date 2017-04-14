@@ -42,6 +42,9 @@
       <div class="image5"><img src="./images/SILENT YULYA_SILENT BEAUTY_0698-3.jpg" alt=""></div>
       <div class="image6"><img src="./images/SILENT YULYA_SILENT BEAUTY_0698-3.jpg" alt=""></div>
     </div>
+    <div class="parallax-mobile">
+      <img src="./images/SILENT YULYA_SILENT BEAUTY_0698-3.jpg" alt="">
+    </div>
     <div class="parallax-credits">
       <p>топ, Ypsilon Studios</p>
       <p>пальто, Nebo</p>
@@ -50,7 +53,7 @@
       <p>сапоги, Stuart Weitzman</p>
     </div>
     <div class="group-maria">
-      <div class="artist-name"><p>МАРИЯ АГУРЕЕВА</p></div>
+      <div class="artist-name-maria"><p>МАРИЯ АГУРЕЕВА</p></div>
       <div class="line"></div>
       <div class="artist-aliby">художник</div>
       <div class="maria-content">
@@ -67,7 +70,7 @@
       </div>
     </div>
     <div class="group-yulia">
-      <div class="artist-name"><p>ЮЛИЯ ТОЧИЛОВА</p></div>
+      <div class="artist-name-yulia"><p>ЮЛИЯ ТОЧИЛОВА</p></div>
       <div class="line"></div>
       <div class="artist-aliby">make-up artist</div>
       <div class="yulia-content">
@@ -99,7 +102,7 @@
       <div class="grid"><img src="./images/SILENT YULYA_SILENT BEAUTY_0849.jpg" alt=""></div>
     </div>
     <div class="credits">
-      идея и организация съёмки: <a href="https://www.instagram.com/stoneradius/">stoneradius studio</a>
+      идея и организация съёмки: <a href="https://www.instagram.com/stoneradius/">STONERADIUS STUDIO</a>
       <br>ассистент фотографа: <a href="https://www.instagram.com/eugenemokrousov/">Евгений Мокроусов</a>
       <br>модель: <a href="https://www.instagram.com/_ann_ev/">anna@nikmanagment</a>
       <br>стилист: <a href="https://www.instagram.com/mashaligay/">Маша Лигай</a>
@@ -111,7 +114,6 @@
           backgroundPicture = $('.background-picture'),
           parallax = $('.parallax'),
           images = $("div[class^='image']"),
-          groupMaria = $('.group-maria p'),
           artistNames = document.querySelectorAll('.artist-name'),
           imageStyle0 = $(images[0]).css('margin-top').slice(0, -2),
           imageStyle1 = $(images[1]).css('margin-top').slice(0, -2),
@@ -122,25 +124,27 @@
 
 
       $(window).on('resize', function(){
-        parallax.height(parallax.width())
-        group1.height(backgroundPicture.height());
+        if (window.innerWidth > 420) {
+          parallax.height(parallax.width())
+          group1.height(backgroundPicture.height());
+        }
       }).trigger('resize');
 
       $(window).on('scroll', function(){
         var top = $(window).scrollTop();
 
-        if ((parallax.offset().top)/4 < top && (parallax.offset().top)*1.8 > top) {
+        if ((parallax.offset().top)/4 < top && (parallax.offset().top)*1.8 > top && window.innerWidth > 425) {
           images[0].style.marginTop = imageStyle0 - top/5 + 'px';
           images[1].style.marginTop = imageStyle1 - top/4 + 'px';
           images[2].style.marginTop = imageStyle2 - top/10 + 'px';
-          images[3].style.marginBottom = imageStyle3 + top/2 + 'px';
-          images[4].style.marginTop = imageStyle4 - top/3 + 'px';
+          images[3].style.marginBottom = imageStyle3 + top/4 + 'px';
+          images[4].style.marginTop = imageStyle4 - top/4 + 'px';
           images[5].style.marginTop = imageStyle5 - top/10 + 'px';
         }
 
-        if ( top < (group1.height() - $('.moving-block').outerHeight()) ) {
+        if ( top < (group1.height() - $('.moving-block').outerHeight()) && window.innerWidth > 425) {
           $('.moving-block').css({'position': 'fixed', 'bottom': 'auto'});
-        } else {
+        } else if (window.innerWidth > 425) {
           $('.moving-block').css({'position': 'absolute', 'bottom' : '0'});
         }
 
@@ -157,47 +161,15 @@
 
 
       $(window).scroll(function(){
-        if ($(artistNames[0]).inView()) {
-          artistNames[0].style.marginRight = 500 - $(window).scrollTop()/6 + 'px';
-          document.querySelector('.group-maria .artist-aliby').style.paddingTop = 55 - $(window).scrollTop()/50 + 'px';
+        if ($('.artist-name-maria').inView() && window.innerWidth > 425) {
+          $('.artist-name-maria').addClass('left-right');
+          $('.group-maria .artist-aliby').addClass('bottom-top');
         }
-        if ($(artistNames[1]).inView()) {
-          artistNames[1].style.marginLeft = 600 - $(window).scrollTop()/6 + 'px';
-          document.querySelector('.group-yulia .artist-aliby').style.paddingTop = 65 - $(window).scrollTop()/55 + 'px';
-          console.log(60 - $(window).scrollTop()/100)
+        if ($('.artist-name-yulia').inView() && window.innerWidth > 425) {
+          $('.artist-name-yulia').addClass('right-left');
+          $('.group-yulia .artist-aliby').addClass('bottom-top');
         }
       });
-
-      // $(window).on('mousemove', function(e){
-      //   var x = window.innerWidth-e.clientX,
-      //       y = window.innerHeight-e.clientY,
-      //       moveXfast = x/120,
-      //       moveYfast = y/80,
-      //       moveXslow = x/300,
-      //       moveYslow = y/200,
-      //       moveX = x/200,
-      //       moveY = y/150;
-
-      //       console.log(imageStyle0)
-
-      //     images[0].style.marginLeft =   +'px';
-      //     images[0].style.marginTop  =   +'px';
-
-      //     images[1].style.marginLeft =  + 'px';
-      //     images[1].style.marginTop  =  + 'px';
-
-      //     images[2].style.marginLeft =  'px';
-      //     images[2].style.marginTop  =  'px';
-
-      //     images[3].style.marginLeft =  + 'px';
-      //     images[3].style.marginTop  =  + 'px';
-
-      //     images[4].style.marginLeft =  'px';
-      //     images[4].style.marginTop  =  'px';
-
-      //     images[5].style.marginLeft =  'px';
-      //     images[5].style.marginTop  =  'px';
-      // })
 
     });
   </script>

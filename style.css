@@ -35,7 +35,6 @@ div[class^='group'], .parallax, .moving-block, .parallax-credits, .img-block {
 }
 
 .group-1 {
-  margin-top: 300px !important;  /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! DISABLE */
   position: relative;
 }
 
@@ -140,6 +139,10 @@ div[class^='group'], .parallax, .moving-block, .parallax-credits, .img-block {
 
 /*PARALLAX*/
 
+.parallax-mobile {
+  display: none;
+}
+
 .parallax {
   position: relative;
   margin-top: 180px;
@@ -218,7 +221,7 @@ div[class^='image'] img {
   align-items: center;
   max-width: 900px;
   width: 100%;
-  margin-top: -350px;
+  margin-top: -250px;
 }
 
 .parallax-credits p {
@@ -233,9 +236,16 @@ div[class^='image'] img {
   font-family: 'Tenor Sans', sans-serif;
 }
 
-.artist-name {
+.artist-name-maria {
   font-size: 36px;
   color: #00AAEB;
+  margin-right: 120px;
+}
+
+.artist-name-yulia {
+  font-size: 36px;
+  color: #00AAEB;
+  margin-left: 120px;
 }
 
 .line {
@@ -243,7 +253,7 @@ div[class^='image'] img {
   background-color: #00BDEC;
 }
 
-.group-maria .artist-name p {
+.group-maria .artist-name-maria p {
   text-align: right;
   margin: 0;
   margin-bottom: 5px;
@@ -260,7 +270,7 @@ div[class^='image'] img {
   color: #00AAEB;
   text-align: right;
   margin-right: 80px;
-  padding-top: 40px;
+  padding-top: 0;
 }
 
 .artist-content {
@@ -285,6 +295,7 @@ div[class^='image'] img {
   text-align: right;
   font-size: 20px;
   line-height: 30px;
+  margin-left: 25px;
 }
 
 .group-yulia {
@@ -293,22 +304,25 @@ div[class^='image'] img {
   margin-bottom: 60px !important;
 }
 
-.group-yulia .artist-name p {
+.group-yulia .artist-name-yulia p {
   margin: 0;
   margin-bottom: 5px;
 }
 
 .group-yulia .artist-aliby {
+  position: absolute;
+  left: 0;
   font-size: 24px;
   color: #00AAEB;
   margin-left: 80px;
-  padding-top: 5px;
+  padding-top: 0;
 }
 
 .yulia-content {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 70px;
 }
 
 .yulia-text {
@@ -380,10 +394,223 @@ div[class^='image'] img {
 }
 /*PARALLAX END*/
 
+/* KEYFRAMES */
+@-webkit-keyframes left-to-right {
+  0%   { margin-right: 300px; }
+  100% { margin-right: 120px; }
+}
+@-moz-keyframes left-to-right {
+  0%   { margin-right: 300px; }
+  100% { margin-right: 120px; }
+}
+@-o-keyframes left-to-right {
+  0%   { margin-right: 300px; }
+  100% { margin-right: 120px; }
+}
+@keyframes left-to-right {
+  0%   { margin-right: 300px; }
+  100% { margin-right: 120px; }
+}
+.left-right {
+  -webkit-animation: left-to-right 2s; /* Safari 4+ */
+  -moz-animation:    left-to-right 2s; /* Fx 5+ */
+  -o-animation:      left-to-right 2s; /* Opera 12+ */
+  animation:         left-to-right 2s; /* IE 10+, Fx 29+ */
+}
+
+
+@-webkit-keyframes right-to-left {
+  0%   { margin-left: 300px; }
+  100% { margin-left: 120px; }
+}
+@-moz-keyframes right-to-left {
+  0%   { margin-left: 300px; }
+  100% { margin-left: 120px; }
+}
+@-o-keyframes right-to-left {
+  0%   { margin-left: 300px; }
+  100% { margin-left: 120px; }
+}
+@keyframes right-to-left {
+  0%   { margin-left: 300px; }
+  100% { margin-left: 120px; }
+}
+.right-left {
+  -webkit-animation: right-to-left 2s; /* Safari 4+ */
+  -moz-animation:    right-to-left 2s; /* Fx 5+ */
+  -o-animation:      right-to-left 2s; /* Opera 12+ */
+  animation:         right-to-left 2s; /* IE 10+, Fx 29+ */
+}
+
+@-webkit-keyframes bottom-to-top {
+  0%   { padding-top: 40px; }
+  100% { padding-top: 0; }
+}
+@-moz-keyframes bottom-to-top {
+  0%   { padding-top: 40px; }
+  100% { padding-top: 0; }
+}
+@-o-keyframes bottom-to-top {
+  0%   { padding-top: 40px; }
+  100% { padding-top: 0; }
+}
+@keyframes bottom-to-top {
+  0%   { padding-top: 40px; }
+  100% { padding-top: 0; }
+}
+
+.bottom-top {
+  -webkit-animation: bottom-to-top 2s; /* Safari 4+ */
+  -moz-animation:    bottom-to-top 2s; /* Fx 5+ */
+  -o-animation:      bottom-to-top 2s; /* Opera 12+ */
+  animation:         bottom-to-top 2s; /* IE 10+, Fx 29+ */
+}
+
+
+/*END KEYFRAMES*/
+
+/*MEDIA QUERIES*/
+
 @media (max-width: 425px) {
   #container {
     width: 90%;
     margin: 0 auto;
   }
+  .about {
+    margin-top: 20px;
+  }
+  .heading-small {
+    font-size: 20px;
+  }
+  .heading-large {
+    font-size: 43px;
+    margin-bottom: 60px;
+    margin-top: 50px;
+  }
+  .tags {
+    font-size: 14px;
+    width: 260px;
+    margin-bottom: 0;
+  }
+  .group-1 {
+    height: 100%;
+    padding-top: 0;
+  }
+  .social {
+    margin: 40px 0 40px 0;
+  }
+  .background-picture {
+    margin-top: 80px;
+  }
+  .moving-block {
+    background: none;
+  }
+  .parallax {
+    display: none;
+  }
+  .parallax-mobile {
+    display: block;
+
+  }
+  .parallax-mobile img {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .parallax-credits {
+    margin-top: 0;
+    display: block;
+  }
+  .parallax-credits p {
+    margin: 0;
+    width: 100%;
+  }
+  .group-maria {
+    margin-top: 40px !important;
+  }
+  .maria-content {
+    border-right: none;
+  }
+  .artist-name-maria {
+    margin-right: 0;
+  }
+  .artist-name-maria p {
+    font-size: 22px;
+    text-align: left !important;
+  }
+  .group-maria .artist-aliby {
+    right: auto;
+    font-size: 20px;
+  }
+  .artist-content {
+    margin-top: 30px;
+    display: block;
+  }
+  .artist-img {
+    width: 100%;
+  }
+  .artist-text {
+    width: 100%;
+    text-align: left;
+    margin-left: 0;
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .group-yulia {
+    margin: 40px 0 40px 0 !important;
+  }
+  .group-yulia .artist-aliby {
+    margin-left: 0;
+    font-size: 20px;
+  }
+  .artist-name-yulia {
+    margin-left: 0;
+    font-size: 22px;
+  }
+  .yulia-content {
+    display: block;
+    margin-top: 50px;
+  }
+  .yulia-text {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .yulia-img {
+    width: 100%;
+  }
+  .question, .answer {
+    text-align: left;
+  }
+  .question {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 0;
+  }
+  .answer {
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+  .mini-circle {
+    display: none;
+  }
+  .img-block {
+    display: block;
+    margin: 40px 0 40px 0;
+  }
+  .grid {
+    width: 100%;
+  }
+  .grid:nth-of-type(1) {
+    margin: 0 0 20px 0;
+  }
+  .credits {
+    text-align: left;
+  }
 }
+
+/* END MEDIA QUERIES */
 
